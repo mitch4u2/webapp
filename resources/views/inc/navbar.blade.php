@@ -44,7 +44,8 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="postition:relative;padding-left:50px;">
+                            <img class="nav_user_image" src="/storage/profile_image/{{ Auth::user()->profile_image }}">                            
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 

@@ -8384,6 +8384,15 @@ button.close {
   background: rgba(255, 255, 255, 0.8);
 }
 
+.nav_user_image {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

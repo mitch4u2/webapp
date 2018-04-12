@@ -63,11 +63,10 @@ class UserController extends Controller
         $user->email = $request->input('email');
         $user->birthday = $request->input('birthday');
         $user->address = $request->input('address');
-        $user->profile_image = $filename;
          if ($request->hasFile('profile_image')) {
-        //     // delete old image
+        // delete old image
              if ($user->profile_image != 'nouserimage.jpg') {
-                 Storage::delete('public/profile_images/' . $user->profile_image);
+                 Storage::delete('public/profile_image/' . $user->profile_image);
              }
              $user->profile_image = $filename;
          }

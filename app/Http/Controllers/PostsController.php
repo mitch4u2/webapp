@@ -128,7 +128,7 @@ class PostsController extends Controller
         if ($request->hasFile('cover_image')) {
             // delete old image
             if ($post->cover_image != 'noimage.jpg') {
-                Storage::delete('public/cover_images/' . $post->cover_image);
+                Storage::delete('public/cover_image/' . $post->cover_image);
             }
             $post->cover_image = $filename;
         }
