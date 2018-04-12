@@ -18,6 +18,9 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/service', 'PagesController@service');
 Route::resource('posts','PostsController');
+Route::get('/profile', 'UserController@show');
+Route::get('/user/edit', 'UserController@edit');
+Route::match(['put', 'patch'], '/user/update','UserController@update');
 
 
 

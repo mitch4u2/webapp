@@ -49,12 +49,13 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="/dashboard"><i class="fa fa-btn fa-dashboard"></i> Dashboard</a></li>
+                            <li><a href="/profile"><i class="fa fa-btn fa-user"></i>  Profile</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                   <i class="fa fa-btn fa-sign-out"></i>   Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
