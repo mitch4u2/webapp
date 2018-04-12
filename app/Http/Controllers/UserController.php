@@ -45,7 +45,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'birthday' => 'required',
-            'address' => 'required',                      
+            'address' => 'required',
+            'cover_image' => 'image|nullable|max:1999',                      
         ]);
         
         //  // handle file upload
