@@ -284,7 +284,6 @@
 <script>
     // make the user country selected
     $(function() {
-         console.log( "ready!" );
          $(".custom-select").val("{{$user->address}}");
      });
 </script>

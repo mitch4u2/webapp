@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\Comment;
 use Image;
 
 class PostsController extends Controller
@@ -82,7 +83,9 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show')->with('post', $post);
+        $comments = Comment::orderBy('id', 'desc')->where('post_id',$id)->get();
+        // var_dump($comments);
+         return view('posts.show')->with('post', $post)->with('comments', $comments);
     }
 
     /**

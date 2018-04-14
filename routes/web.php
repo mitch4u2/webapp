@@ -18,16 +18,15 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 Route::get('/service', 'PagesController@service');
 Route::resource('posts','PostsController');
+Route::resource('comments','CommentsController');
+Route::resource('likes','LikesController');
 Route::get('/profile', 'UserController@show');
 Route::get('/user/edit', 'UserController@edit');
 Route::match(['put', 'patch'], '/user/update','UserController@update');
-
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-    
-// });
+Route::post('/like', [
+    'uses' => 'CommentsController@likeComment',
+    'as' => 'like'
+]);
 
 // Route::get('/about', function () {
 //     return View('pages.about');
