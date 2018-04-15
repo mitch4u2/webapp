@@ -1,6 +1,10 @@
 @extends ("layouts.app") 
 @section ('content')
 <a href="/posts" class="btn btn-default">GO BACK</a>
+<button type="button" data-postid="{{$post->id}}" class="btn {{ Auth::user()->favorites()->where('post_id',$post->id)->first() ? 'btn-danger' :'btn-default' }} favorite">
+    <span style="pointer-events:none;"class="glyphicon glyphicon-heart"></span><b style="pointer-events:none;"> {{ Auth::user()->favorites()->where('post_id',$post->id)->first() ? 'Remove From Favorite' :'Add to Favorite' }}</b>
+</button>
+
 <h1>{{$post->title}}</h1>
 <img style="width:100%" src="/storage/cover_image/{{$post->cover_image}}" alt="">
 <br><br>
@@ -62,6 +66,7 @@
                         <i class="fa fa-thumbs-down icon"></i><span>{{ $likes->where('comment_id', $comment->id)->where('like_dislike',false)->count()  }}</span>
                     </a>
                     </div>
+
                     @endif
                 </div>
             </div>
@@ -71,6 +76,8 @@
 </div>
 <script>
     var token = '{{ Session::token() }}';
-  var urllike = '{{ route('like') }}';
+    var urllike = '{{ route('like') }}';
+    var urlfavorite = '{{ route('favorite') }}';
+
 </script>
 @endsection

@@ -27,10 +27,10 @@ Route::post('/like', [
     'uses' => 'CommentsController@likeComment',
     'as' => 'like'
 ]);
-
-// Route::get('/about', function () {
-//     return View('pages.about');
-// });
+Route::post('/favorite', [
+    'uses' => 'FavoritesController@store',
+    'as' => 'favorite'
+]);
 
 // Route::get('/testtwig', function () {
 //     return View::make('hello');

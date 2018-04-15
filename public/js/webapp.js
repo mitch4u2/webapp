@@ -1,5 +1,6 @@
 var commentId = "0";
 
+// like and unlike
 $("body").on("click", "a.like", function(event) {
   event.preventDefault;
   commentId = event.target.parentNode.dataset["commentid"];
@@ -47,5 +48,64 @@ $("body").on("click", "a.like", function(event) {
           parseInt(event.target.previousElementSibling.innerText) - 1;
       }
     }
+  });
+});
+
+// favorite
+$("body").on("click", "button.favorite", function(event) {
+  event.preventDefault;
+  postId = event.target.dataset["postid"];
+  if (event.target.classList.contains("btn-danger")) {
+    event.target.classList.remove("btn-danger");
+    event.target.classList.add("btn-default");
+    event.target.lastChild.innerText = "Add to Favorite";
+  } else {
+    event.target.classList.remove("btn-default");
+    event.target.classList.add("btn-danger");
+    event.target.lastChild.innerText = "Remove From Favorite";
+  }
+
+  $.ajax({
+    method: "POST",
+    url: urlfavorite,
+    data: { postId: postId, _token: token }
+  }).done(function() {
+    // if (islike) {
+    //   if (event.target.classList.contains("btn-default")) {
+    //     event.target.classList.remove("btn-default");
+    //     event.target.classList.add("btn-primary");
+    //     event.target.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.innerText) + 1;
+    //   } else {
+    //     event.target.classList.remove("btn-primary");
+    //     event.target.classList.add("btn-default");
+    //     event.target.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.innerText) - 1;
+    //   }
+    //   event.target.nextElementSibling.classList.remove("btn-primary");
+    //   event.target.nextElementSibling.classList.add("btn-default");
+    //   if (event.target.nextElementSibling.innerText != "0") {
+    //     event.target.nextElementSibling.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.nextElementSibling.innerText) - 1;
+    //   }
+    // } else {
+    //   if (event.target.classList.contains("btn-default")) {
+    //     event.target.classList.remove("btn-default");
+    //     event.target.classList.add("btn-primary");
+    //     event.target.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.innerText) + 1;
+    //   } else {
+    //     event.target.classList.remove("btn-primary");
+    //     event.target.classList.add("btn-default");
+    //     event.target.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.innerText) - 1;
+    //   }
+    //   event.target.previousElementSibling.classList.remove("btn-primary");
+    //   event.target.previousElementSibling.classList.add("btn-default");
+    //   if (event.target.previousElementSibling.innerText != "0") {
+    //     event.target.previousElementSibling.firstChild.nextSibling.innerText =
+    //       parseInt(event.target.previousElementSibling.innerText) - 1;
+    //   }
+    // }
   });
 });
