@@ -2,7 +2,9 @@
 @section('content')
 <h1>Edit User</h1>
 {!! Form::open(['action'=> ['UserController@update'],'method'=>'POST','enctype'=>'multipart/form-data']) !!}
-<div class="col-md-10 col-md-offset-1">
+<div class="well col-md-offset-1">
+<div class="row">
+    <div class="col-md-2 col-md-offset-5">
         <img class="profile_image" src="/storage/profile_image/{{ $user->profile_image }}">
         <div class="change_image">
             <label class="custom-file-upload">
@@ -10,22 +12,17 @@
                 change
             </label>
         </div>
+    </div>
 </div>
-<div class="form-group">
-    {{ Form::label('name','Name')}} {{ Form::text('name',$user->name,['class'=> 'form-control','placeholder'=>'name'])}}
-</div>
-<div class="form_group">
-    {{Form::label('email','Email')}} {{Form::email('email',$user->email,['class'=>'form-control','placeholder'=>'email'])}}
-</div>
-<div class="form_group">
-    {{Form::label('birthday','Birthday')}}
-    {{Form::date('birthday',$user->birthday,['class'=>'form-control','placeholder'=>'Birthday'])}}
-</div>
-<div class="form_group">
-    <label for="address" class="col-md-4 control-label">Country</label>
-    <div class="col-md-6">
-        <div class="input-group mb-3">
-            <select class="custom-select form-control" id="inputGroupSelect01 address" name="address">
+
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        {{ Form::label('name','Name')}} {{ Form::text('name',$user->name,['class'=> 'form-control','placeholder'=>'name'])}} {{Form::label('email','Email')}}
+        {{Form::email('email',$user->email,['class'=>'form-control','placeholder'=>'email'])}} {{Form::label('birthday','Birthday')}}
+        {{Form::date('birthday',$user->birthday,['class'=>'form-control','placeholder'=>'Birthday'])}}
+        <label for="address">Country</label>
+        <br>
+        <select class="custom-select form-control" id="inputGroupSelect01 address" name="address">
                         <option value="">Country...</option>
                         <option value="Afganistan">Afghanistan</option>
                         <option value="Albania">Albania</option>
@@ -276,15 +273,16 @@
                         <option value="Zimbabwe">Zimbabwe</option>
                         
             </select>
-        </div>
+        <br> {{Form::hidden('_method','PUT')}} {{Form::submit('Submit', ['class'=> 'btn btn-primary pull-right'])}} {!! Form::close()
+        !!}
     </div>
 </div>
- {{Form::hidden('_method','PUT')}} {{Form::submit('Submit', ['class'=> 'btn btn-primary'])}} {!! Form::close()
-!!}
+</div>
 <script>
     // make the user country selected
     $(function() {
          $(".custom-select").val("{{$user->address}}");
      });
+
 </script>
 @endsection

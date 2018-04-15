@@ -53,14 +53,16 @@
                 </div>
                 <div class="post-description">
                     <p>{{ $comment->body}}</p>
+                    @if(!Auth::guest())
                     <div class="stats" data-commentid="{{$comment->id}}">
                         <a class="btn {{ Auth::user()->likes()->where('comment_id',$comment->id)->first() ? Auth::user()->likes()->where('comment_id',$comment->id)->first()->like_dislike == 1 ? 'btn-primary' : 'btn-default' : 'btn-default' }} stat-item like">
-                        <i class="fa fa-thumbs-up icon"></i><span>0</span>
+                            <i class="fa fa-thumbs-up icon"></i><span>{{ $likes->where('comment_id', $comment->id)->where('like_dislike',true)->count()  }}</span>
                     </a>
                         <a class="btn {{ Auth::user()->likes()->where('comment_id',$comment->id)->first() ? Auth::user()->likes()->where('comment_id',$comment->id)->first()->like_dislike == 0 ? 'btn-primary' : 'btn-default' : 'btn-default' }} stat-item like">
-                        <i class="fa fa-thumbs-down icon"></i><span>0</span>
+                        <i class="fa fa-thumbs-down icon"></i><span>{{ $likes->where('comment_id', $comment->id)->where('like_dislike',false)->count()  }}</span>
                     </a>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

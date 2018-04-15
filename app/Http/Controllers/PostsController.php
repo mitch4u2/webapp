@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Comment;
+use App\Like;
+
 use Image;
 
 class PostsController extends Controller
@@ -84,8 +86,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         $comments = Comment::orderBy('id', 'desc')->where('post_id',$id)->get();
+        $likes = Like::all(); 
         // var_dump($comments);
-         return view('posts.show')->with('post', $post)->with('comments', $comments);
+         return view('posts.show')->with('post', $post)->with('comments', $comments)->with('likes',$likes);
     }
 
     /**

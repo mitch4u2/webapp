@@ -8360,8 +8360,7 @@ button.close {
 
 .change_image {
   position: relative;
-  right: 180px;
-  top: 100px;
+  top: -50px;
 }
 
 .change_image input[type="file"] {
