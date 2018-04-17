@@ -58,4 +58,6 @@ export default class User extends React.Component {
     );
   }
 }
-ReactDOM.render(<User />, document.getElementById("app"));
+if (document.getElementById("app")) {
+  ReactDOM.render(<User />, document.getElementById("app"));
+}

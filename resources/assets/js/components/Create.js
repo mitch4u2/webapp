@@ -79,4 +79,6 @@ export default class Create extends React.Component {
     );
   }
 }
-ReactDOM.render(<Create />, document.getElementById("app"));
+if (document.getElementById("create")) {
+  ReactDOM.render(<Create />, document.getElementById("create"));
+}
