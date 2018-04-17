@@ -10,3 +10,8 @@ $ php artisan make:auth
 <h1>CKEditor Package</h1> https://github.com/UniSharp/laravel-ckeditor
 <br>
 composer require unisharp/laravel-ckeditor
+<br>
+<h1>axios</h1> to pass the HTTP requests https://github.com/axios/axios 
+<br>
+ $ npm install axios
+<br>
