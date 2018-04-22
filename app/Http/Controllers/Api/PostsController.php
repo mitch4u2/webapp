@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Psy\Util\Json;
-use App\User;
+use App\Post;
 
-class UserController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('team')->with('roles')->get();  
-        return response()->json($users);
+        $posts = Post::with('user')->get();  
+        return $posts->toJson(); 
     }
 
     /**

@@ -52,6 +52,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'birthday' => 'required|date',
             'address' => 'required|string|max:255',
+            'team' => 'integer',
             'password' => 'required|string|min:6|confirmed',
             'profile_image' => 'string|max:1999',
         ]);
@@ -70,6 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'birthday' => $data['birthday'],
             'address' => $data['address'],
+            'team_id' => $data['team'],
             'password' => bcrypt($data['password']),
         ]);
     }

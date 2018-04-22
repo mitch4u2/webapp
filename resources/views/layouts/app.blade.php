@@ -19,9 +19,19 @@
 
 <body>
     @include('inc.navbar')
-    <div class="container">
-    @include('inc.messages') @yield('content')
-
+    <div class="container-fluid">
+    @include('inc.messages')
+        <div class="row">
+            <div class="col col-4 col-xs-2">
+                Sidebar left
+            </div>
+            <div class="col col-8 col-md-8">
+                @yield('content')
+            </div>
+            <div class="col col-4 col-xs-2">
+                Sidebar right
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

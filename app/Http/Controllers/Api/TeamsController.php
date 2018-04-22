@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Psy\Util\Json;
-use App\User;
 
-class UserController extends Controller
+use Psy\Util\Json;
+use App\Team;
+
+class TeamsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('team')->with('roles')->get();  
-        return response()->json($users);
+        $teams = Team::all();
+        return response()->json($teams);
     }
 
     /**

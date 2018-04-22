@@ -28,4 +28,6 @@
     var token = '{{ Session::token() }}';
     var urlfavorite = '{{ route('favorite') }}';
 </script>
+
+<div id="posts"></div>
 @endsection

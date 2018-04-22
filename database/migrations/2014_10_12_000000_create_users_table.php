@@ -19,12 +19,15 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('birthday')->default($current_time);
-            $table->string('address')->default('Italy');
+            $table->integer('team_id')->unsigned();
+            $table->string('birthday');
+            $table->string('address');
             $table->string('password');
             $table->string('profile_image')->default('nouserimage.jpg');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('team_id')->references('id')->on('team');
         });
     }
 

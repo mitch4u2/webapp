@@ -31,6 +31,10 @@ Route::post('/favorite', [
     'uses' => 'FavoritesController@store',
     'as' => 'favorite'
 ]);
+// admin routes
+Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
 
 // Route::get('/testtwig', function () {
 //     return View::make('hello');

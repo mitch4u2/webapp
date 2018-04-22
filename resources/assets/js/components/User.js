@@ -9,7 +9,7 @@ export default class User extends React.Component {
   }
   componentWillMount() {
     let $this = this;
-    Axios.get("api/users")
+    Axios.get("../api/users")
       .then(Response => {
         $this.setState({
           data: Response.data
@@ -30,8 +30,12 @@ export default class User extends React.Component {
           <thead>
             <tr>
               <th>ID</th>
+              <th>Image</th>
+              <th>Birthday</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Team</th>
+              <th>Roles</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -39,8 +43,25 @@ export default class User extends React.Component {
             {this.state.data.map((user, i) => (
               <tr>
                 <td>{user.id}</td>
+                <td>
+                  <img
+                    src={"/storage/profile_image/" + user.profile_image}
+                    alt=""
+                    className="img-circle-like"
+                  />
+                </td>
+                <td>{user.birthday}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
+                <td>{user.team.name}</td>
+                <td>{user.roles.map((role, i) => <li>{role.name}</li>)}</td>
+                <td>
+                  <select>
+                    <option value="volvo">admin</option>
+                    <option value="saab">maneger</option>
+                    <option value="mercedes">User</option>
+                  </select>
+                </td>
                 <td>
                   <a href="" className="btn btn-primary">
                     Edit
