@@ -38,7 +38,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new post();
+        // $post->title = $request->input('title');
+        
+        // $post->body = $request->input('body');
+        $post->user_id = 1;
+        $post->cover_image = 'noimage';
+
+        $post->body = $request->get('body');
+        
+
+        $post->save();
+
     }
 
     /**

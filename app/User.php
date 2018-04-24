@@ -39,6 +39,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Like');
     }
 
+    public function likeposts(){
+        return $this->hasMany('App\LikePost');
+    }
+
     public function favorites(){
         return $this->hasMany('App\Favorite');
     }
@@ -53,22 +57,23 @@ class User extends Authenticatable
 
     public function hasAnyRole($roles)
     {
-        if(is_array($roles)){
-            foreach($roles as $role){
-                if($this->hasRole($role)){
+        if (is_array($roles)) {
+            foreach ($roles as $role) {
+                if ($this->hasRole($role)) {
                     return true;
                 }
             }
-        }else{
-            if($this->hasRole($roles)){
+        } else {
+            if ($this->hasRole($roles)) {
                 return true;
             }
         }
         return false;
     }
-
-    public function hasRole($role){
-        if($this->roles()->where('name',$role)->first()){
+    
+    public function hasRole($role)
+    {
+        if ($this->roles()->where('name', $role)->first()) {
             return true;
         }
         return false;

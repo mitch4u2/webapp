@@ -180,3 +180,26 @@ margin: 2px;
 .media .btn-like{
   border-left: 3px solid blue;
 }
+
+// post form
+
+.create-post{
+  background-color: white;
+  textarea {
+    width: 80%;
+    height: 100%;
+    border-collapse: collapse;
+    border: 0px;
+    resize: none;
+    margin:5px 0;
+    padding:1%;
+}
+}
+.img-circle-post{
+  width: 60px;
+  height: 60px;
+  border: 2px solid #e5e7e8;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-top: 20%;
+}

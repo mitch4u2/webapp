@@ -17,4 +17,8 @@ class Post extends Model
         return $this->hasMany('App\Favorite');
     }
 
+    public function likeposts(){
+        return $this->hasMany('App\LikePost');
+    }
+
 }

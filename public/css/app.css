@@ -8563,6 +8563,29 @@ button.close {
   border-left: 3px solid blue;
 }
 
+.create-post {
+  background-color: white;
+}
+
+.create-post textarea {
+  width: 80%;
+  height: 100%;
+  border-collapse: collapse;
+  border: 0px;
+  resize: none;
+  margin: 5px 0;
+  padding: 1%;
+}
+
+.img-circle-post {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #e5e7e8;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-top: 20%;
+}
+
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

@@ -52,7 +52,7 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            // 'title' => 'required',
             'body' => 'required',
             'cover_image' => 'image|nullable|max:1999',
         ]);
@@ -67,11 +67,17 @@ class PostsController extends Controller
         }
         // CREATE POST 
         $post = new post();
-        $post->title = $request->input('title');
-        $post->body = $request->input('body');
+        // $post->title = $request->input('title');
+        
+        // $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
         $post->cover_image = $filename;
+
+        $post->body = $request->get('body');
+        
+
         $post->save();
+
 
         return redirect('/posts')->with('success', 'Post Created');
     }
