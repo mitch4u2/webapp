@@ -27,6 +27,10 @@ Route::post('/like', [
     'uses' => 'CommentsController@likeComment',
     'as' => 'like'
 ]);
+Route::post('/likepost', [
+    'uses' => 'LikesController@store',
+    'as' => 'likePost'
+]);
 Route::post('/favorite', [
     'uses' => 'FavoritesController@store',
     'as' => 'favorite'

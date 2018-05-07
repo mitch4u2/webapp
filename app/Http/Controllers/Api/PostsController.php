@@ -9,6 +9,7 @@ use App\Post;
 
 class PostsController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -42,8 +43,11 @@ class PostsController extends Controller
         // $post->title = $request->input('title');
         
         // $post->body = $request->input('body');
-        $post->user_id = 1;
-        $post->cover_image = 'noimage';
+        $user = Auth::id();dd($user);
+        
+        $post->user_id = Auth::user();
+        $post->cover_image = $request->get('cover_image_name');
+        // $post->user_id = $user_id;
 
         $post->body = $request->get('body');
         

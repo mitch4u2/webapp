@@ -26,7 +26,10 @@ export default class Post extends React.Component {
           <li className="media well">
             <a href={"/users/" + post.user.id} className="pull-left">
               <img
-                src={"/storage/profile_image/" + post.user.profile_image}
+                src={
+                  "gs://office-manager-web-app.appspot.com/" +
+                  post.user.profile_image
+                }
                 alt=""
                 className="img-circle"
               />

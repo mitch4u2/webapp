@@ -7,7 +7,8 @@ export default class CreatePost extends React.Component {
     super();
     this.state = {
       body: "",
-      cover_image: null
+      cover_image: null,
+      cover_image_name: ""
     };
   }
   handleBodyChange(e) {
@@ -15,11 +16,40 @@ export default class CreatePost extends React.Component {
       body: e.target.value
     });
   }
+
+  fileSelectedHandler(e) {
+    this.setState({
+      cover_image: e.target.files[0]
+    });
+  }
   handleSubmit(e) {
     e.preventDefault();
     console.log(this.state);
+    const fd = new FormData();
+    const filename = new Date().getTime() + this.state.cover_image.name;
+    fd.append("cover_image", this.state.cover_image, filename);
     axios
-      .post("/api/posts", { body: "hello mo" })
+      .post(
+        "https://us-central1-office-manager-web-app.cloudfunctions.net/uploadFile",
+        fd,
+        {
+          onUploadProgress: progressEvent => {
+            console.log(
+              "Upload Progress: " +
+                Math.round(progressEvent.loaded / progressEvent.total * 100) +
+                "%"
+            );
+          }
+        }
+      )
+      .then(res => {
+        console.log(res);
+      });
+    axios
+      .post("/api/posts", {
+        body: this.state.body,
+        cover_image_name: "verver"
+      })
       .then(response => {
         console.log(response);
       })
@@ -28,9 +58,6 @@ export default class CreatePost extends React.Component {
       });
   }
 
-  fileSelectedHandler(e) {
-    cover_image: e.target.files[0];
-  }
   render() {
     return (
       <div className="media well create-post">
@@ -50,7 +77,20 @@ export default class CreatePost extends React.Component {
             onChange={this.handleBodyChange.bind(this)}
           />
           <hr />
-          <input type="file" onChange={this.fileSelectedHandler} />
+          <input
+            // style={{ display: "none" }}
+            // ref={fileInput => (this.fileInput = fileInput)}
+            type="file"
+            name="cover_image"
+            id="cover_image"
+            onChange={this.fileSelectedHandler.bind(this)}
+          />
+          {/* <button
+            onClick={() => this.fileInput.click()}
+            className="btn btn-btn-success"
+          >
+            Add Image
+          </button> */}
           <button
             type="submit"
             className="btn btn-primary pull-right"
